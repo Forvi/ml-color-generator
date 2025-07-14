@@ -1,0 +1,5 @@
+1. LBFGS, LR=0.001 - Train Loss: 0.1238, Test Loss: 0.1122
+2. Adam, LR=0.001 - Train Loss: 0.1802, Test Loss: 0.1747
+3. LBFGS, LR=0.008 - Train Loss: 0.0696, Test Loss: 0.0685
+4. Adam, LR=0.008 -  Train Loss: 0.0678, Test Loss: 0.0658
+5. ReLU, Adam, LR=0.008 - Train Loss: 0.0668, Test Loss: 0.0659
