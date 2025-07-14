@@ -25,7 +25,6 @@ def train_model(model, train_loader, optimizer, criterion, test_loader, epochs:i
         print(f'Test Loss: {test_loss:.4f}')
         print('-' * 50)
     
-    save_model('./results/color_model.pth', model, optimizer, epochs, train_losses[-1])
     return {
         'train_losses': train_losses,
         'test_losses': test_losses,
