@@ -1,6 +1,6 @@
 from torch.utils.data import Dataset, DataLoader
 import pandas as pd
-from utils.model_utils import hex_to_rgb
+from utils.model_utils import hex_to_hsv
 import torch
 
 class ColorDataset(Dataset):
@@ -15,9 +15,8 @@ class ColorDataset(Dataset):
         input_rgb = row['input_color']
         output_rgb = row['output_color']
 
-        # нормализация и преобразование в tensor
-        input_tensor = torch.tensor(input_rgb, dtype=torch.float32) / 255.0
-        output_tensor = torch.tensor(output_rgb, dtype=torch.float32) / 255.0
+        input_tensor = torch.tensor(input_rgb, dtype=torch.float32)
+        output_tensor = torch.tensor(output_rgb, dtype=torch.float32)
 
         return input_tensor, output_tensor
     
@@ -28,7 +27,7 @@ class ColorDataset(Dataset):
         df = pd.read_csv(path_to_file)
         
         for row in df.columns:
-            df[row] = df[row].apply(hex_to_rgb)
+            df[row] = df[row].apply(hex_to_hsv)
 
         return df
     

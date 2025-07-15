@@ -1,4 +1,5 @@
 import torch
+import matplotlib.colors as colors
 import os
 
 
@@ -13,6 +14,11 @@ def hex_to_rgb(hex):
     rgb.append(decimal)
   
   return tuple(rgb)
+
+def hex_to_hsv(hex):
+  """Переводит цвет из hex в hsv"""
+  rgb_normalized = colors.to_rgb(hex)
+  return colors.rgb_to_hsv(rgb_normalized)
 
 
 def count_parameters(model):
