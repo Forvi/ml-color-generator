@@ -3,12 +3,10 @@ import torch.nn as nn
 from tqdm import tqdm
 import torch.optim as optim
 
-from utils.model_utils import save_model
+from utils.model_utils import count_parameters
 
 
 def train_model(model, train_loader, optimizer, criterion, test_loader, epochs:int = 10, lr: float = 0.001, device:str = 'cpu'):
-    optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
-    criterion = nn.MSELoss()
     
     train_losses = []
     test_losses = []
@@ -25,6 +23,7 @@ def train_model(model, train_loader, optimizer, criterion, test_loader, epochs:i
         print(f'Test Loss: {test_loss:.4f}')
         print('-' * 50)
     
+    print(f'Количество параметров: {count_parameters(model)}')     
     return {
         'train_losses': train_losses,
         'test_losses': test_losses,

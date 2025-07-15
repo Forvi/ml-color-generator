@@ -3,6 +3,7 @@ import os
 
 
 def hex_to_rgb(hex):
+  """Переводит цвет из hex в rgb"""
   if hex[0] == '#':
     hex = hex[1:]
 
@@ -23,15 +24,13 @@ def save_model(
         path: str, 
         model: torch.nn.Module, 
         optimizer: torch.optim.Optimizer, 
-        epoch: int, 
-        best_test_loss: float
+        epoch: int
     ):
     """Сохраняет модель"""
     state_dict = {
         'model': model.state_dict(),
         'optimizer': optimizer.state_dict(),
         'epoch': epoch,
-        'best_test_loss': best_test_loss,
     }
     os.makedirs(os.path.dirname(path), exist_ok=True)
     torch.save(state_dict, path)
